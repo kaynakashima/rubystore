@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-  <head>
+  <head >
     <title><%= content_for(:title) || "Store" %></title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -23,12 +23,24 @@
   </head>
 
   <body>
-    <nav>
-      <%= link_to "Home", root_path %>
-      <%= button_to "Log out", session_path, method: :delete if authenticated? %>
+    <nav class = "bg-white border-gray-200 dark:bg-blue-900">
+      <div class= "hidden w-full md:block md:w-auto">
+        <ul class="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg">
+          <li>
+            <a href="#" class="block py-2 px-3 text-white justify-center" aria-current="page">
+              <%= link_to "Home", root_path %>
+            </a>
+          </li>
+          <li>
+              <%= button_to "Log out", session_path, method: :delete if authenticated? %>
+          </li>
+        </ul>
+      </div>
     </nav>
 
-    <div class="notice"><%= notice %></div>
+    <div class="notice grid-rows-2">
+      <%= notice %>
+    </div>
 
     <main>
       <%= yield %>

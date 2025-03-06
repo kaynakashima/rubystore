@@ -1,6 +1,6 @@
-class SubscriberController < ApplicationController
+class SubscribersController < ApplicationController
     allow_unauthenticated_access
-    before_action
+    before_action :set_product
 
     def create
       @product.subscribers.where(subscriber_params).first_or_create
@@ -10,7 +10,7 @@ class SubscriberController < ApplicationController
     private
 
     def set_product
-      @product.find(params[:product_id])
+      @product = Product.find(params[:product_id])
     end
 
     def subscriber_params
